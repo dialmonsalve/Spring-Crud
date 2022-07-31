@@ -16,12 +16,19 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.diamones.springboot.app.model.service.IClienteService;
-import com.diamones.springboot.app.models.dao.IClienteDao;
 import com.diamones.springboot.app.models.entity.Cliente;
 
 @Controller
 @SessionAttributes("cliente")
 public class ClienteController {
+	
+	@RequestMapping({"/", "","/index"})
+	public String index(Model model) {
+		
+		model.addAttribute("titulo", "Primer CRUD");
+		
+		return "index";
+	}
 	
 	
 	@RequestMapping("/listar")
