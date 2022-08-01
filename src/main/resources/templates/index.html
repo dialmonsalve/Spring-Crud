@@ -5,9 +5,16 @@
 
 <body>
 
-<h1 th:text="${titulo}"></h1>
+	<div class="container"> 
+		<div th:replace ="layout/layout:: nav"></div>
+		
+		<div  class="row align-self-center mt-3">
+			<h1 th:text="${titulo}"></h1>
+		</div>
+	</div>
 	
 	
+	<footer th:replace="layout/layout:: footer"></footer>
 
 </body>
 </html>
