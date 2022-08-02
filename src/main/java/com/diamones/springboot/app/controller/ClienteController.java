@@ -30,11 +30,10 @@ public class ClienteController {
 		return "index";
 	}
 	
-	
 	@RequestMapping("/listar")
 	public String listar(Model model) {
 		
-		model.addAttribute("titulo","Creacion de clientes");
+		model.addAttribute("titulo","Listado de clientes");
 		model.addAttribute("clientes",clienteService.findAll());
 		
 		return "listar";
@@ -46,7 +45,7 @@ public class ClienteController {
 		Cliente cliente = new Cliente();
 		
 		model.put("cliente", cliente);
-		model.put("titulo", "Formulario cliente");
+		model.put("titulo", "Creación de clientes");
 		
 		 return "form";
 	}

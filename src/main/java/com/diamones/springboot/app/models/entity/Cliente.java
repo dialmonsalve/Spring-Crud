@@ -19,6 +19,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "clientes")
 public class Cliente implements Serializable {
 	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public Long getId() {
 		return id;
 	}
