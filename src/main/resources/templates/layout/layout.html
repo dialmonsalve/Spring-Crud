@@ -10,61 +10,67 @@
 
 <body>
 
-	<div class="container">
-	<nav class="container navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
-	
-		<a href="#" class="navbar-brand">DiaMones</a>
+	<header th:fragment="header">
+		<nav class="container navbar navbar-expand-lg navbar-dark bg-dark">
 		
-		<!-- Boton para el men� movil -->
-		<button 
-			class="navbar-toggler"
-			type="button"
-			data-bs-toggle="collapse"
-			data-bs-target="#menu"
-			aria-controls="menu"
-			aria-expanded="false"
-			aria-label="Mostrar / Ocultar Menu"
-		>
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		
-		<!-- Menu de navegacion -->
-		<div class="collapse navbar-collapse" id="menu">		
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a th:href="@{/index}" class="nav-link" >Inicio</a></li>	
-				
-				<!-- Dropdown -->	
-				<li class="nav-item dropdown">
-					<a 
-						href="" 
-						class="nav-link dropdown-toggle" 
-						role="button"
-						data-bs-toggle="dropdown"
-						aria-expanded="false"
-						id="dropdown-menu"
-						>
-							Cliente
-					
-					</a>
-					
-					<ul class="dropdown-menu" aria-labelledby="dropdown-menu">
-						<li><a th:href="@{/form}" class="dropdown-item">Crear</a></li>
-						<li><a href="#" class="dropdown-item">Editar</a></li>
-						<li><a href="#" class="dropdown-item">Eliminar</a></li>
-					</ul>
-				</li>
-				
-				<li class="nav-item"><a href="#" class="nav-link" >Acerca de</a></li>
+			<a href="#" class="navbar-brand">DiaMones</a>
 			
-			</ul>
-			<form action="" class="d-flex">
-				<input type="search" class="form-control me-2" placeholder="Buscar" aria-label="Buscar">
-				<button class="btn btn-outline-danger" type="button" >Buscar</button>
-			</form>				
-		</div>
-	
-</nav>
-</div>
+			<!-- Boton para el men� movil -->
+			<button 
+				class="navbar-toggler"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#menu"
+				aria-controls="menu"
+				aria-expanded="false"
+				aria-label="Mostrar / Ocultar Menu"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<!-- Menu de navegacion -->
+			<div class="collapse navbar-collapse" id="menu">		
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a th:href="@{/index}" class="nav-link" >Inicio</a></li>	
+					
+					<!-- Dropdown -->	
+					<li class="nav-item dropdown">
+						<a 
+							href="" 
+							class="nav-link dropdown-toggle" 
+							role="button"
+							data-bs-toggle="dropdown"
+							aria-expanded="false"
+							id="dropdown-menu"
+							>
+								Cliente
+						
+						</a>
+						
+						<ul class="dropdown-menu" aria-labelledby="dropdown-menu">
+							<li><a th:href="@{/form}" class="dropdown-item">Crear</a></li>
+							<li><a href="#" class="dropdown-item">Editar</a></li>
+							<li><a href="#" class="dropdown-item">Eliminar</a></li>
+						</ul>
+					</li>
+					
+					<li class="nav-item"><a href="#" class="nav-link" >Acerca de</a></li>
+				
+				</ul>
+				<form action="" class="d-flex">
+					<input type="search" class="form-control me-2" placeholder="Buscar" aria-label="Buscar">
+					<button class="btn btn-outline-danger" type="button" >Buscar</button>
+				</form>				
+			</div>
+		</nav>
+
+			<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+			<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
+			<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+			<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+
+	</header>
+
 
 
 	<footer th:fragment="footer" class="container py-5">
@@ -94,8 +100,10 @@
 		
 		</div>
 		<p> &copy; copyright 2022 Todos los derechos reservados @diamones</p>
-		<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
-			
+		<script type="text/javascript" th:src="@{/js/bjquery-3.6.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>		
+		<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+
 	</footer>
 </body>
 </html>

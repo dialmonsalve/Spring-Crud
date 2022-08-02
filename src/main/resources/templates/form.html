@@ -6,11 +6,112 @@
 <body>
 
 	<div class="container"> 
-		<div th:replace ="layout/layout:: nav"></div>
+		<header th:replace ="layout/layout:: header"></header>
 				
 		<div  class="d-flex justify-content-center mt-3">
-			<h1 th:text="${titulo}"></h1>
+			<h1 th:text="${titulo}" class="text-success"></h1>
 		</div>
+		
+		<form 
+			th:action="@{/form}" 
+			th:object="${cliente}" 
+			method="post" 
+			class="container card bg-dark py-5" 
+			>
+			<div class="form-group mx-3 row">
+				<div class="col">
+					<input 
+						type="text" 
+						th:field="*{nombre}" 
+						class="col-md-12 col-form-label my-1" 
+						placeholder="Nombre" 
+						th:errorclass="'form-control alert-danger'"
+						>
+						<small 
+							th:if="${#fields.hasErrors('nombre')}" 
+							th:errors="*{nombre}"
+							class="form-text text-warning"							
+							>
+						</small>
+				</div>
+				
+				<div class="col">
+				<input 
+					type="text" 
+					th:field="*{apellido}" 
+					class="col-md-12 col-form-label my-1 " 
+					placeholder="Apellido"
+					th:errorclass="'form-control alert-danger'"
+					>
+					<small 
+						class="col-md-5 form-text text-warning"
+						th:if="${#fields.hasErrors('apellido')}" 
+						th:errors="*{apellido}"
+						>
+					</small>
+					</div>
+			</div>
+			
+			<div class="form-group mx-3 row">
+				<div class="col">
+					<input 
+						type="text" 
+						th:field="*{edad}" 
+						class="col-md-12 col-form-label my-1" 
+						placeholder="Edad" 
+						th:errorclass="'form-control alert-danger'"
+						>
+						<small 
+							th:if="${#fields.hasErrors('edad')}" 
+							th:errors="*{edad}"
+							class="form-text text-warning"							
+							>
+						</small>
+				</div>
+				
+				<div class="col">
+				<input 
+					type="text" 
+					th:field="*{email}" 
+					class="col-md-12 col-form-label my-1 " 
+					placeholder="Email"
+					th:errorclass="'form-control alert-danger'"
+					>
+					<small 
+						class="col-md-5 form-text text-warning"
+						th:if="${#fields.hasErrors('email')}" 
+						th:errors="*{email}"
+						>
+					</small>
+					</div>
+			</div>
+			
+			<div class="form-group mx-3 row">
+				<div class="col">
+					<input 
+						type="password" 
+						th:field="*{password}" 
+						class="col-md-12 col-form-label my-1" 
+						placeholder="Password" 
+						th:errorclass="'form-control alert-danger'"
+						>
+						<small 
+							th:if="${#fields.hasErrors('password')}"
+							th:errors="*{password}"
+							class="form-text text-warning"							
+							>
+						</small>
+				</div>
+				
+				<div class="col">
+				<input 
+					type="submit" 
+					value="Guardar"
+					class="col-md-6 form-control my-2 btn btn-outline-primary" 
+					>
+				</div>
+			</div>
+		</form>		
 	</div>
 	
 	<footer th:replace="layout/layout:: footer"></footer>

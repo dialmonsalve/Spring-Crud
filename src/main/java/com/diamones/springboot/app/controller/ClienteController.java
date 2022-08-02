@@ -64,12 +64,13 @@ public class ClienteController {
 		
 		clienteService.save(cliente);
 		status.setComplete();
-		flash.addAttribute("success", mensajeFlash);
+		flash.addFlashAttribute("success", mensajeFlash);
+		
 		
 		return "redirect:listar";
 	}
 	
-	@RequestMapping(value="/form{id}")
+	@RequestMapping(value="/form/{id}")
 	public String editar(@PathVariable(value="id") Long id, Map<String,Object> model, RedirectAttributes flash) {
 		
 		Cliente cliente = null;
@@ -80,13 +81,13 @@ public class ClienteController {
 			
 			if (cliente==null) {
 				
-				flash.addAttribute("error", "El ID del cliente no existe en la base de datos");
+				flash.addFlashAttribute("error", "El ID del cliente no existe en la base de datos");
 				
 				return "redirect:listar";
 			}
 		}else {
 			
-			flash.addAttribute("error", "El ID del cliente no puede ser cero");
+			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero");
 			
 			return "redirect:listar";
 		}
@@ -97,13 +98,13 @@ public class ClienteController {
 		 return "form";
 	}
 
-	@RequestMapping(value="/eliminar{id}")
+	@RequestMapping(value="/eliminar/{id}")
 	public String eliminar(@PathVariable(value="id") Long id, RedirectAttributes flash) {
 		
 		if(id>0) {
 			
 			clienteService.delete(id);
-			flash.addAttribute("success","Cliente eliminado con éxito");
+			flash.addFlashAttribute("success","Cliente eliminado con éxito");
 		}
 		
 		return "redirect:listar";

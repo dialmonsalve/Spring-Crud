@@ -12,6 +12,12 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -90,10 +96,15 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotBlank
 	private String nombre;
 	
+	@NotBlank
 	private String apellido;
 	
+	@NotNull
+	@Min(18)
+	@Max(90)
 	private Integer edad;
 	
 	@Column(name ="create_at")
@@ -101,8 +112,11 @@ public class Cliente implements Serializable {
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date fechaCreacion;
 	
+	@NotBlank
+	@Email
 	private String email;
 	
+	@Size(min=4, max=8)
 	private String password;
 	
 	private static final long serialVersionUID = 1L;
