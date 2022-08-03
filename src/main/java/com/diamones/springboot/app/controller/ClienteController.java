@@ -35,7 +35,7 @@ public class ClienteController {
 		return "index";
 	}
 	
-	@RequestMapping(value="/listar", method = RequestMethod.GET)
+	@RequestMapping("/listar")
 	public String listar(@RequestParam(name="page", defaultValue = "0") int page, Model model) {
 		
 		Pageable pageRequest = PageRequest.of(page, 10);
@@ -119,7 +119,7 @@ public class ClienteController {
 			flash.addFlashAttribute("success","Cliente eliminado con éxito");
 		}
 		
-		return "redirect:listar";
+		return "redirect:/listar";
 	}
 	
 	@Autowired
